@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use GuzzleHttp\Client;
 use BotMan\BotMan\BotMan;
 
@@ -29,6 +30,30 @@ class CurrencyExchangeController extends Controller
         $from = mb_strtoupper($from);
 
         $to = mb_strtoupper($to);
+
+        $notValidCurrencyMessage = 'is not a valid currency code.';
+
+        $validator = Validator::make(
+            compact('amount', 'from', 'to'),
+            [
+                'amount' => ['numeric', 'gt:0'],
+                'from'   => ['string', 'size:3'],
+                'to'     => ['string', 'size:3'],
+            ],
+            [
+                'amount.gt' => 'The amount to convert must be greater than 0.',
+                'from.size' => "{$from} {$notValidCurrencyMessage}",
+                'to.size'   => "{$to} {$notValidCurrencyMessage}",
+            ]
+        );
+
+        if ($validator->fails()) {
+            $message = implode(' ', $validator->errors()->all());
+
+            $bot->reply($message);
+
+            return;
+        }
 
         $guzzle = new Client();
 
