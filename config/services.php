@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'amdoren' => [
+        'api_key' => env('AMDOREN_API_KEY'),
+        'api_url' => 'https://www.amdoren.com/api',
+    ],
+
 ];

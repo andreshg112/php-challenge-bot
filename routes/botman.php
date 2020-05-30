@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\CurrencyExchangeController;
 
 /** @var \BotMan\BotMan\BotMan */
 $botman = resolve('botman');
@@ -12,7 +13,14 @@ $botman->hears('Hi', function ($bot) {
 
 $botman->hears('Start conversation', BotManController::class . '@startConversation');
 
-$botman->hears('convert {amount} {from} to {to}', function ($bot, $amount, $from, $to) {
+$botman->hears(
+    'convert {amount} {from} to {to}',
+    CurrencyExchangeController::class
+);
+
+$botman->fallback(function ($bot) {
     /** @var \BotMan\BotMan\BotMan $bot */
-    $bot->reply("from: {$from}, to: {$to}, amount: {$amount}");
+    $bot->reply(
+        'Sorry, I did not understand these commands. Here is a list of commands I understand: ...'
+    );
 });
