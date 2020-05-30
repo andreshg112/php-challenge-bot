@@ -59,12 +59,12 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations",
-            "@php artisan ide-helper:generate"
+            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations"
+            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations",
+            "@php artisan ide-helper:generate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
