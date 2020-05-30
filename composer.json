@@ -22,6 +22,7 @@
         "shipping-docker/vessel": "^5.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.7",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
@@ -58,7 +59,8 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations"
+            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations",
+            "@php artisan ide-helper:generate"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",

@@ -13,6 +13,7 @@ class BotManController extends Controller
      */
     public function handle()
     {
+        /** @var \BotMan\BotMan\BotMan */
         $botman = app('botman');
 
         $botman->listen();
