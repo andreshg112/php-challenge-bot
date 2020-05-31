@@ -6,7 +6,6 @@ use Exception;
 use Validator;
 use GuzzleHttp\Client;
 use BotMan\BotMan\BotMan;
-
 use function GuzzleHttp\json_decode;
 
 class CurrencyExchangeController extends Controller

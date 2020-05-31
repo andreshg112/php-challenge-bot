@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BotManController;
+use App\Http\Controllers\SignupController;
 use App\Http\Controllers\CurrencyExchangeController;
 
 /** @var \BotMan\BotMan\BotMan */
@@ -11,6 +12,8 @@ $botman->hears('Help', BotManController::class . '@help');
 $botman->hears('Hi', BotManController::class . '@hi');
 
 $botman->hears('Start conversation', BotManController::class . '@startConversation');
+
+$botman->hears('Signup', SignupController::class);
 
 $botman->hears(
     'Convert {amount} {from} to {to}',
