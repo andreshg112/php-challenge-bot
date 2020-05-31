@@ -47,11 +47,13 @@ class VerificationController extends Controller
     /**
      * Customized.
      *
-     * @param \App\User $user
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function verify(User $user)
+    public function verify(Request $request)
     {
+        $user = User::findOrFail($request->route('id'));
+
         if ($user->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }

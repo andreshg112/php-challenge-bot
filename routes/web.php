@@ -19,5 +19,5 @@ Route::match(['get', 'post'], 'botman', 'BotManController@handle');
 
 Route::get('botman/tinker', 'BotManController@tinker');
 
-$this->get('email/verify/{user}', 'Auth\VerificationController@verify')
+$this->get('email/verify/{id}', 'Auth\VerificationController@verify')
     ->name('verification.verify');
