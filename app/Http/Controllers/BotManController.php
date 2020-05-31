@@ -30,6 +30,7 @@ class BotManController extends Controller
                 . ' | 4) "deposit" to put money in your account.'
                 . ' | 5) "withdraw" to extract money from your account.'
                 . ' | 6) "balance" to see your current account balance.'
+                . ' | 7) "logout" to exit.'
         );
     }
 
