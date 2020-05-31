@@ -25,18 +25,21 @@ class SignupConversation extends Conversation
 
     public function askEmail()
     {
-        $this->ask('One more thing - what is your email?', function (Answer $answer) {
-            $this->email = $answer->getText();
+        $this->ask(
+            'One more thing - what is your email?',
+            function (Answer $answer) {
+                $this->email = $answer->getText();
 
-            $this->say('Great - that is all we need, ' . $this->firstname);
+                $this->say('Great - that is all we need, ' . $this->firstname);
 
-            $user = User::create([
-                'name'  => $this->firstname,
-                'email' => $this->email,
-            ]);
+                $user = User::create([
+                    'name'  => $this->firstname,
+                    'email' => $this->email,
+                ]);
 
-            $user->sendEmailVerificationNotification();
-        });
+                $user->sendEmailVerificationNotification();
+            }
+        );
     }
 
     public function run()

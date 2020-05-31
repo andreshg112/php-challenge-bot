@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\ChatbotLoginController;
 use App\Http\Controllers\CurrencyExchangeController;
 
 /** @var \BotMan\BotMan\BotMan */
@@ -10,6 +11,8 @@ $botman = resolve('botman');
 $botman->hears('Help', BotManController::class . '@help');
 
 $botman->hears('Hi', BotManController::class . '@hi');
+
+$botman->hears('Login', ChatbotLoginController::class);
 
 $botman->hears('Start conversation', BotManController::class . '@startConversation');
 
