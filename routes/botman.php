@@ -26,6 +26,6 @@ $botman->hears(
 $botman->fallback(function ($bot) {
     /** @var \BotMan\BotMan\BotMan $bot */
     $bot->reply(
-        'Sorry, I did not understand these commands. Here is a list of commands I understand: ...'
+        'Sorry, I do not understand these commands. Type "hi" or "help".'
     );
 });

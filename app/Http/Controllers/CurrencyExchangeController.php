@@ -82,9 +82,7 @@ class CurrencyExchangeController extends Controller
 
             report($exception);
 
-            $bot->reply(
-                'Sorry! I have an error. Please, contact the developer.'
-            );
+            $bot->reply(config('app.error_message'));
 
             return;
         }
