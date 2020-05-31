@@ -13,9 +13,6 @@ class LoginConversation extends Conversation
     /** @var string */
     protected $code = null;
 
-    /** @var string */
-    protected $email = null;
-
     /** @var \App\User */
     protected $user = null;
 
@@ -32,7 +29,7 @@ class LoginConversation extends Conversation
                     return;
                 }
 
-                $this->say('You are in!');
+                $this->say("{$this->user->name}, you are in!");
             }
         );
     }
@@ -42,15 +39,27 @@ class LoginConversation extends Conversation
         $this->ask(
             'Please, type your email.',
             function (Answer $answer) {
-                $this->email = $answer->getText();
+                $email = $answer->getText();
 
                 /** @var \App\User */
-                $this->user = User::whereEmail($this->email)->first();
+                $this->user = User::whereEmail($email)->first();
 
                 if (is_null($this->user)) {
                     $this->say(
-                        "There is no user with the email: {$this->email}."
+                        "There is no user with the email: {$email}."
                             . ' Type "signup" if you want to register.'
+                    );
+
+                    return;
+                }
+
+                if (!$this->user->hasVerifiedEmail()) {
+                    $this->user->sendEmailVerificationNotification();
+
+                    $this->say(
+                        'The email has not been verified. A verification link'
+                            . " was sent to {$email}. Click on it and then"
+                            . ' type "login" here. Do not forget to check Spam.'
                     );
 
                     return;

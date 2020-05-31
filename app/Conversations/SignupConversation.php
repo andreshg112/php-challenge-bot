@@ -79,7 +79,7 @@ class SignupConversation extends Conversation
                 $this->say(
                     "{$this->name}, you will receive a verification email."
                         . ' Open it and click on "Verify", then you can type'
-                        . ' "login" here.'
+                        . ' "login" here. Do not forget to check Spam.'
                 );
             }
         );
