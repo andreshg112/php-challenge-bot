@@ -29,7 +29,12 @@ class LoginConversation extends Conversation
                     return;
                 }
 
-                $this->say("{$this->user->name}, you are in!");
+                $this->bot->userStorage()->save($this->user->toArray());
+
+                $this->say(
+                    "{$this->user->name}, you are in! Now you can type"
+                        . ' "deposit", "withdraw", or "balance".'
+                );
             }
         );
     }
@@ -76,6 +81,20 @@ class LoginConversation extends Conversation
 
     public function run()
     {
+        $userData = $this->bot->userStorage()->find();
+
+        $this->user = User::find($userData->get('id'));
+
+        if (isset($this->user)) {
+            $this->say(
+                "{$this->user->name}, you already logged in. Now you can type"
+                    . ' "deposit", "withdraw", or "balance".'
+                    . ' If you want to start with a new account, type "logout".'
+            );
+
+            return;
+        }
+
         $this->askEmail();
     }
 }

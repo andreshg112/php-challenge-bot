@@ -33,6 +33,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @mixin \Eloquent
  * @method static self create(array $attributes = [])
  * @method static self findOrFail(mixed $id, array $columns = ['*'])
+ * @method static self|null find(mixed $id, array $columns = ['*'])
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

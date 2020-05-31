@@ -12,3 +12,4 @@ npm-debug.log
 .env
 .env.bak.vessel
 _ide_helper.php
+/storage/botman
