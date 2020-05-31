@@ -35,8 +35,10 @@ class BotManController extends Controller
 
     public function hi(BotMan $bot)
     {
+        $appName = config('app.name');
+
         $bot->reply(
-            'Hello! My name is MoneyBot. I can help you with some monetary'
+            "Hello! My name is {$appName}. I can help you with some monetary"
                 . ' operations. Type "help" in any moment and I will show you'
                 . ' what I can do.'
         );
