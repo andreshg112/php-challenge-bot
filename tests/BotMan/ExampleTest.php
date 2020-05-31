@@ -25,10 +25,12 @@ class ExampleTest extends TestCase
 
     public function testHi()
     {
+        $appName = config('app.name');
+
         $this->bot
             ->receives('Hi')
             ->assertReply(
-                'Hello! My name is MoneyBot. I can help you with some monetary'
+                "Hello! My name is {$appName}. I can help you with some monetary"
                     . ' operations. Type "help" in any moment and I will show you'
                     . ' what I can do.'
             );

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>BotMan Studio</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" type="text/css">
@@ -51,6 +51,12 @@
     </style>
 
     <!-- Scripts -->
+    <script>
+        var botmanWidget = {
+            title: "{{ config('app.name') }}",
+        };
+    </script>
+
     <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </head>
 <body>
