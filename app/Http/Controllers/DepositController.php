@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use Validator;
 use BotMan\BotMan\BotMan;
+use Illuminate\Validation\Rule;
+use App\Services\Amdoren\Currency;
 
 class DepositController extends Controller
 {
@@ -12,9 +14,11 @@ class DepositController extends Controller
      * Loaded through routes/botman.php
      *
      * @param \BotMan\BotMan\BotMan $bot
-     * @param integer|float $amount
+     * @param int|float $amount
+     * @param string|null $currency
+     * @return void
      */
-    public function __invoke(BotMan $bot, $amount)
+    public function __invoke(BotMan $bot, $amount, $currency = null)
     {
         if (Auth::guest()) {
             $bot->reply(config('app.messages.must_login'));
@@ -22,11 +26,16 @@ class DepositController extends Controller
             return;
         }
 
+        $currency = mb_strtoupper(trim($currency));
+
+        $currencies = Currency::list();
+
         $validator = Validator::make(
-            compact('amount'),
+            compact('amount', 'currency'),
             [
                 // bail to verify first that it is numeric.
-                'amount' => ['bail', 'numeric', 'gt:0'],
+                'amount'   => ['bail', 'numeric', 'gt:0'],
+                'currency' => ['nullable', Rule::in($currencies->keys())],
             ],
             [
                 'amount.gt' => 'The amount to deposit must be greater than 0.',

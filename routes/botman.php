@@ -21,7 +21,10 @@ $botman->hears(
 
 $botman->hears('Balance', BalanceController::class);
 
-$botman->hears('Deposit {amount}', DepositController::class);
+// If I don't use a this regex, it executes twice the DepositController.
+$botman->hears('Deposit ([0-9]+)', DepositController::class);
+
+$botman->hears('Deposit {amount} {currency}', DepositController::class);
 
 $botman->hears('Help', BotManController::class . '@help');
 
