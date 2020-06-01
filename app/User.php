@@ -19,21 +19,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|self newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|self query()
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereUpdatedAt($value)
  * @mixin \Eloquent
  * @method static self create(array $attributes = [])
  * @method static self findOrFail(mixed $id, array $columns = ['*'])
  * @method static self|null find(mixed $id, array $columns = ['*'])
+ * @property string $currency
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereCurrency($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -45,7 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'currency', 'password',
     ];
 
     /**
