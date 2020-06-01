@@ -2,6 +2,8 @@
 
 namespace App;
 
+use DB;
+use App\Exceptions\InsufficientBalance;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -61,20 +63,66 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function deposit(float $amount): Transaction
-    {
-        $transaction = $this->transactions()->create([
-            'type'   => 'deposit',
-            'amount' => $amount,
-        ]);
-
-        $this->increment('balance', $amount);
-
-        return $transaction;
-    }
+    #region Relationships
 
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
+
+    #endregion
+
+    #region Methods
+
+    public function deposit(float $amount): Transaction
+    {
+        try {
+            DB::beginTransaction();
+
+            $transaction = $this->transactions()->create([
+                'type'   => 'deposit',
+                'amount' => $amount,
+            ]);
+
+            $this->increment('balance', $amount);
+
+            DB::commit();
+
+            return $transaction;
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw $th;
+        }
+    }
+
+    public function withdraw(float $amount): Transaction
+    {
+        $balance = $this->balance;
+
+        if ($amount > $balance) {
+            throw new InsufficientBalance($amount, $balance, $this->currency);
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $transaction = $this->transactions()->create([
+                'type'   => 'withdraw',
+                'amount' => $amount,
+            ]);
+
+            $this->decrement('balance', $amount);
+
+            DB::commit();
+
+            return $transaction;
+        } catch (\Throwable $th) {
+            DB::rollBack();
+
+            throw $th;
+        }
+    }
+
+    #endregion
 }

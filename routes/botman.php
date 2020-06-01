@@ -3,6 +3,7 @@
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\ChatbotLoginController;
 use App\Http\Controllers\ChatbotLogoutController;
 use App\Http\Controllers\CurrencyExchangeController;
@@ -27,7 +28,10 @@ $botman->hears('Logout', ChatbotLogoutController::class);
 
 $botman->hears('Signup', SignupController::class);
 
-$botman->hears('Start conversation', BotManController::class . '@startConversation');
+$botman->hears(
+    'Start conversation',
+    BotManController::class . '@startConversation'
+);
 
 // This endpoint was created just to debug user information.
 $botman->hears('User', function ($bot) {
@@ -36,6 +40,8 @@ $botman->hears('User', function ($bot) {
 
     $bot->reply($storage->toJson());
 });
+
+$botman->hears('Withdraw {amount}', WithdrawController::class);
 
 $botman->fallback(function ($bot) {
     /** @var \BotMan\BotMan\BotMan $bot */

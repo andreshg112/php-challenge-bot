@@ -1,5 +1,7 @@
 <?php
 
+$appName = env('APP_NAME', 'Laravel');
+
 return [
 
     /*
@@ -13,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => $appName,
 
     /*
     |--------------------------------------------------------------------------
@@ -116,6 +118,24 @@ return [
 
     'error_message'
     => 'Sorry! I have an error. Please, contact the developer.',
+
+    'messages' => [
+        'help' => 'You can type the next commands:'
+            . ' 1) "convert X USD to COP"'
+            . ' to convert X dollars to Colombian pesos. You can use almost'
+            . ' any currency code'
+            . ' | 2) "signup" to register your information.'
+            . ' | 3) "login" to enter and start registering transactions.'
+            . ' | 4) "deposit X" to put X amount of money in your account.'
+            . ' | 5) "withdraw X" to extract X amount of money from your'
+            . ' account.'
+            . ' | 6) "balance" to see your current account balance.'
+            . ' | 7) "logout" to exit.',
+
+        'hi' => "Hello! My name is {$appName}. I can help you with some monetary"
+            . ' operations. Type "help" in any moment and I will show you'
+            . ' what I can do.'
+    ],
 
     /*
     |--------------------------------------------------------------------------
