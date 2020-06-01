@@ -62,7 +62,7 @@ class WithdrawController extends Controller
 
             report($th);
 
-            $bot->reply(config('app.error_message'));
+            $bot->reply(config('app.messages.error'));
         }
     }
 }

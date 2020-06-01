@@ -96,7 +96,7 @@ class SignupConversation extends Conversation
             } catch (\Throwable $th) {
                 report($th);
 
-                $this->say(config('app.error_message'));
+                $this->say(config('app.messages.error'));
 
                 return;
             }

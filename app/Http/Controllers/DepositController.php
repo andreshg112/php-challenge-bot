@@ -54,7 +54,7 @@ class DepositController extends Controller
         } catch (\Throwable $th) {
             report($th);
 
-            $bot->reply(config('app.error_message'));
+            $bot->reply(config('app.messages.error'));
         }
     }
 }

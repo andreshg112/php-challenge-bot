@@ -116,10 +116,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'error_message'
-    => 'Sorry! I have an error. Please, contact the developer.',
-
     'messages' => [
+        'error' => 'Sorry! I have an error. Please, contact the developer.',
+
         'help' => 'You can type the next commands:'
             . ' 1) "convert X USD to COP"'
             . ' to convert X dollars to Colombian pesos. You can use almost'
