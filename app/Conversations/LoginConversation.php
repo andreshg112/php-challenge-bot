@@ -34,7 +34,7 @@ class LoginConversation extends Conversation
 
                 $this->say(
                     "{$this->user->name}, you are in! Now you can type"
-                        . ' "deposit", "withdraw", or "balance".'
+                        . ' "deposit X", "withdraw X", or "balance".'
                 );
             }
         );
@@ -52,7 +52,7 @@ class LoginConversation extends Conversation
 
                 if (is_null($this->user)) {
                     $this->say(
-                        "There is no user with the email: {$email}."
+                        "There is no user with the email {$email}."
                             . ' Type "signup" if you want to register.'
                     );
 
@@ -88,8 +88,8 @@ class LoginConversation extends Conversation
 
         if (isset($this->user)) {
             $this->say(
-                "{$this->user->name}, you already logged in. Now you can type"
-                    . ' "deposit", "withdraw", or "balance".'
+                "{$this->user->name}, you are already logged in. Now you can"
+                    . ' type "deposit X", "withdraw X", or "balance".'
                     . ' If you want to start with a new account, type "logout".'
             );
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
+use App\Http\Middleware\CheckForUser;
 use App\Conversations\ExampleConversation;
 
 class BotManController extends Controller
@@ -14,6 +15,8 @@ class BotManController extends Controller
     {
         /** @var \BotMan\BotMan\BotMan */
         $botman = app('botman');
+
+        $botman->middleware->heard(new CheckForUser);
 
         $botman->listen();
     }
@@ -27,8 +30,9 @@ class BotManController extends Controller
                 . ' any currency code'
                 . ' | 2) "signup" to register your information.'
                 . ' | 3) "login" to enter and start registering transactions.'
-                . ' | 4) "deposit" to put money in your account.'
-                . ' | 5) "withdraw" to extract money from your account.'
+                . ' | 4) "deposit X" to put X amount of money in your account.'
+                . ' | 5) "withdraw X" to extract X amount of money from your'
+                . ' account.'
                 . ' | 6) "balance" to see your current account balance.'
                 . ' | 7) "logout" to exit.'
         );

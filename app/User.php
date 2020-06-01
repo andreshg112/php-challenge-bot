@@ -36,6 +36,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static self|null find(mixed $id, array $columns = ['*'])
  * @property string $currency
  * @method static \Illuminate\Database\Eloquent\Builder|self whereCurrency($value)
+ * @property float $balance
+ * @method static \Illuminate\Database\Eloquent\Builder|self whereBalance($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -47,7 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'currency', 'password',
+        'name', 'email', 'currency', 'balance', 'password',
     ];
 
     /**
@@ -58,4 +60,21 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function deposit(float $amount): Transaction
+    {
+        $transaction = $this->transactions()->create([
+            'type'   => 'deposit',
+            'amount' => $amount,
+        ]);
+
+        $this->increment('balance', $amount);
+
+        return $transaction;
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

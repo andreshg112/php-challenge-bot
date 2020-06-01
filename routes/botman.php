@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ChatbotLoginController;
 use App\Http\Controllers\ChatbotLogoutController;
 use App\Http\Controllers\CurrencyExchangeController;
@@ -13,6 +14,8 @@ $botman->hears(
     'Convert {amount} {from} to {to}',
     CurrencyExchangeController::class
 );
+
+$botman->hears('Deposit {amount}', DepositController::class);
 
 $botman->hears('Help', BotManController::class . '@help');
 
