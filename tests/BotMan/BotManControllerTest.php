@@ -4,37 +4,20 @@ namespace Tests\BotMan;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class BotManControllerTest extends TestCase
 {
     public function testHelp()
     {
         $this->bot
             ->receives('Help')
-            ->assertReply(
-                'You can type the next commands:'
-                    . ' 1) "convert X USD to COP"'
-                    . ' to convert X dollars to Colombian pesos. You can use almost'
-                    . ' any currency code'
-                    . ' | 2) "signup" to register your information.'
-                    . ' | 3) "login" to enter and start registering transactions.'
-                    . ' | 4) "deposit" to put money in your account.'
-                    . ' | 5) "withdraw" to extract money from your account.'
-                    . ' | 6) "balance" to see your current account balance.'
-                    . ' | 7) "logout" to exit.'
-            );
+            ->assertReply(config('app.messages.help'));
     }
 
     public function testHi()
     {
-        $appName = config('app.name');
-
         $this->bot
             ->receives('Hi')
-            ->assertReply(
-                "Hello! My name is {$appName}. I can help you with some monetary"
-                    . ' operations. Type "help" in any moment and I will show you'
-                    . ' what I can do.'
-            );
+            ->assertReply(config('app.messages.hi'));
     }
 
     /**
@@ -42,7 +25,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testConversationBasicTest()
+    public function testStartConversation()
     {
         $quotes = [
             'When there is no desire, all things are at peace. - Laozi',
