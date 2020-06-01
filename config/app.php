@@ -133,7 +133,9 @@ return [
 
         'hi' => "Hello! My name is {$appName}. I can help you with some monetary"
             . ' operations. Type "help" in any moment and I will show you'
-            . ' what I can do.'
+            . ' what I can do.',
+
+        'must_login' => 'Sorry! You must login first. Type "login".',
     ],
 
     /*

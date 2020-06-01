@@ -1,7 +1,10 @@
 <?php
 
+use App\User;
+use BotMan\BotMan\BotMan;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\WithdrawController;
 use App\Http\Controllers\ChatbotLoginController;
@@ -15,6 +18,8 @@ $botman->hears(
     'Convert {amount} {from} to {to}',
     CurrencyExchangeController::class
 );
+
+$botman->hears('Balance', BalanceController::class);
 
 $botman->hears('Deposit {amount}', DepositController::class);
 
@@ -34,17 +39,16 @@ $botman->hears(
 );
 
 // This endpoint was created just to debug user information.
-$botman->hears('User', function ($bot) {
-    /** @var \BotMan\BotMan\BotMan $bot */
-    $storage = $bot->userStorage()->find();
+$botman->hears('User', function (BotMan $bot) {
+    /** @var \App\User $user */
+    $user = Auth::user() ?? new User();
 
-    $bot->reply($storage->toJson());
+    $bot->reply($user->toJson());
 });
 
 $botman->hears('Withdraw {amount}', WithdrawController::class);
 
-$botman->fallback(function ($bot) {
-    /** @var \BotMan\BotMan\BotMan $bot */
+$botman->fallback(function (BotMan $bot) {
     $bot->reply(
         'Sorry, I do not understand these commands. Type "hi" or "help".'
     );
