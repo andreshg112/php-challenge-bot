@@ -53,6 +53,7 @@
     <!-- Scripts -->
     <script>
         var botmanWidget = {
+            introMessage: "{{ config('app.messages.hi') }}",
             title: "{{ config('app.name') }}",
         };
     </script>
