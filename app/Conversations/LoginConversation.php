@@ -19,7 +19,8 @@ class LoginConversation extends Conversation
     public function askCode()
     {
         $this->ask(
-            'Please, type the six characters code you received in your email.',
+            'Please, type the six characters code you received in your email.'
+                . ' Do not forget to check Spam.',
             function (Answer $answer) {
                 $code = $answer->getText();
 
