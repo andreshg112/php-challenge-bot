@@ -18,7 +18,7 @@ class WithdrawController extends Controller
     public function __invoke(BotMan $bot, $amount)
     {
         if (Auth::guest()) {
-            $bot->reply('Sorry! You must login first. Type "login".');
+            $bot->reply(config('app.messages.must_login'));
 
             return;
         }
