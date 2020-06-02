@@ -19,6 +19,9 @@ cd php-challenge-bot
 # Install and run
 bash ./install.sh
 
+# Run tests
+./vessel test
+
 # Stop the environment when you have finished
 ./vessel stop
 ```
@@ -39,9 +42,9 @@ Go to the [localhost:80](http://localhost) and click on the mail icon in the inf
 
 3.  `login` to enter and start registering transactions.
 
-4.  `deposit X` to put X amount of money in your account.
+4.  `deposit X USD` to put X amount of money in your account. The currency code is optional. If specified, the amount will be converted to your default currency specified when signing up.
 
-5.  `withdraw X` to extract X amount of money from your account.
+5.  `withdraw X USD` to extract X amount of money from your account. The currency code is optional. If specified, the amount will be converted to your default currency specified when signing up.
 
 6.  `balance` to see your current account balance.
 
