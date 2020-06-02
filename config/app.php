@@ -123,15 +123,26 @@ return [
         => 'Sorry, I do not understand these commands. Type "hi" or "help".',
 
         'help' => 'You can type the next commands:'
+
             . ' 1) "convert X USD to COP"'
             . ' to convert X dollars to Colombian pesos. You can use almost'
             . ' any currency code'
+
             . ' | 2) "signup" to register your information.'
+
             . ' | 3) "login" to enter and start registering transactions.'
-            . ' | 4) "deposit X" to put X amount of money in your account.'
-            . ' | 5) "withdraw X" to extract X amount of money from your'
+
+            . ' | 4) "deposit X USD" to put X amount of money in your account.'
+            . ' The currency code is optional. If specified, the amount will'
+            . ' be converted to your default currency specified when signing up.'
+
+            . ' | 5) "withdraw X USD" to extract X amount of money from your'
             . ' account.'
+            . ' The currency code is optional. If specified, the amount will'
+            . ' be converted to your default currency specified when signing up.'
+
             . ' | 6) "balance" to see your current account balance.'
+
             . ' | 7) "logout" to exit.',
 
         'hi' => "Hi! My name is {$appName}. I can help you with some monetary"
@@ -139,6 +150,9 @@ return [
             . ' what I can do.',
 
         'must_login' => 'Sorry! You must login first. Type "login".',
+
+        'you_are_in' => 'You are in! Now you can type "deposit X USD",'
+            . ' "withdraw X USD", or "balance".',
     ],
 
     /*
