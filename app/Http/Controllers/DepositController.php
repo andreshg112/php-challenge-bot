@@ -85,7 +85,6 @@ class DepositController extends Controller
         }
 
         try {
-            /** @var \App\User $user */
             $user->deposit($convertedAmount);
 
             $message = "{$convertedAmount} {$user->currency} was added to your"
