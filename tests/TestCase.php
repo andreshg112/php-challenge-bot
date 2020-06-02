@@ -4,11 +4,12 @@ namespace Tests;
 
 use App\BotManTester;
 use BotMan\BotMan\BotMan;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, WithFaker;
 
     /**
      * @var BotMan
