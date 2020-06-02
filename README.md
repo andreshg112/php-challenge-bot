@@ -16,13 +16,11 @@ git clone https://github.com/andreshg112/php-challenge-bot.git
 
 cd php-challenge-bot
 
-cp .env.example .env
+# Install and run
+bash ./install.sh
 
-composer install
-
-./vessel start
-
-./vessel artisan migrate --step
+# Stop the environment when you have finished
+./vessel stop
 ```
 
 ## Add environment variables

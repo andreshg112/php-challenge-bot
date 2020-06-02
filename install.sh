@@ -1,8 +1,10 @@
 #!/bin/bash
 
+composer install
+
 cp .env.example .env
 
-composer install
+php artisan key:generate
 
 ./vessel start
 
