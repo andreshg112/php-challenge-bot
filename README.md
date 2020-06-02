@@ -33,11 +33,11 @@ Please, add the provided values for MAIL\_\*, AMDOREN_API_KEY, and SENTRY_LARAVE
 
 Go to the [localhost:80](http://localhost) and click on the mail icon in the inferior right corner of the screen.
 
-# Chatbot commans
+# Chatbot commands
 
 1.  `convert X USD to COP` to convert X United States Dollars to Colombian Pesos. You can use any currency code listed [here](https://www.amdoren.com/currency-list).
 
-2.  `signup` to register your information. I suggest you use a Gmail account and check Spam if needed. Outlook is not receiving the password email.
+2.  `signup` to register your information. I suggest you use a Gmail based account and check Spam if needed. Outlook is not receiving the password email.
 
 3.  `login` to enter and start registering transactions.
 
