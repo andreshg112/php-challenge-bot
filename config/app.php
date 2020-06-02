@@ -119,6 +119,9 @@ return [
     'messages' => [
         'error' => 'Sorry! I have an error. Please, contact the developer.',
 
+        'fallback'
+        => 'Sorry, I do not understand these commands. Type "hi" or "help".',
+
         'help' => 'You can type the next commands:'
             . ' 1) "convert X USD to COP"'
             . ' to convert X dollars to Colombian pesos. You can use almost'

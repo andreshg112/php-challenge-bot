@@ -22,9 +22,7 @@ $botman->hears(
 $botman->hears('Balance', BalanceController::class);
 
 // If I don't use a this regex, it executes twice the DepositController.
-$botman->hears('Deposit ([0-9]+)', DepositController::class);
-
-$botman->hears('Deposit {amount} {currency}', DepositController::class);
+$botman->hears('Deposit {amount}', DepositController::class);
 
 $botman->hears('Help', BotManController::class . '@help');
 
@@ -52,7 +50,5 @@ $botman->hears('User', function (BotMan $bot) {
 $botman->hears('Withdraw {amount}', WithdrawController::class);
 
 $botman->fallback(function (BotMan $bot) {
-    $bot->reply(
-        'Sorry, I do not understand these commands. Type "hi" or "help".'
-    );
+    $bot->reply(config('app.messages.fallback'));
 });
