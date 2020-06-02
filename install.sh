@@ -4,7 +4,7 @@ composer install
 
 cp .env.example .env
 
-php artisan key:generate
+./vessel artisan key:generate
 
 ./vessel start
 
