@@ -17,9 +17,12 @@ class Helpers
      */
     public static function inputToTransactionParameters(string $input): array
     {
-        $parameters = array_values(
-            array_filter(array_map('trim', explode(' ', $input)))
-        );
+        $array = array_map('trim', explode(' ', $input));
+
+        $parameters = array_values(array_filter($array, function ($value) {
+            // Only empty strings are ignored.
+            return $value !== '';
+        }));
 
         if (count($parameters) > 2) {
             throw new \Exception(config('app.messages.fallback'));

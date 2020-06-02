@@ -61,7 +61,6 @@ class WithdrawController extends Controller
         }
 
         try {
-            /** @var \App\User $user */
             $user->withdraw($convertedAmount);
 
             $message = "{$convertedAmount} {$user->currency} was extracted from your"
