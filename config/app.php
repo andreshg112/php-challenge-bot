@@ -153,6 +153,8 @@ return [
 
         'you_are_in' => 'You are in! Now you can type "deposit X USD",'
             . ' "withdraw X USD", or "balance".',
+
+        'welcome' => 'Welcome! Click on the mail icon button to your right.',
     ],
 
     /*
