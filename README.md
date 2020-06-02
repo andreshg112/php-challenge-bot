@@ -27,7 +27,7 @@ composer install
 
 ## Add environment variables
 
-Please, add the provided values for MAIL\_\*, AMDOREN_API_KEY, and SENTRY_LARAVEL_DSN. The last one is optional, but it allows me to check and fix bugs.
+Please, add the provided values for MAIL_PASSWORD, AMDOREN_API_KEY, and SENTRY_LARAVEL_DSN. The last one is optional, but it allows me to check and fix bugs.
 
 ## Open your browswer
 
