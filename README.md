@@ -1,25 +1,50 @@
 <p align="center"><img height="188" width="198" src="https://botman.io/img/botman.png"></p>
-<h1 align="center">BotMan Studio</h1>
+<h1 align="center">MoneyBot (Powered by BotMan)</h1>
 
-## About BotMan Studio
+# Installation instructions
 
-While BotMan itself is framework agnostic, BotMan is also available as a bundle with the great [Laravel](https://laravel.com) PHP framework. This bundled version is called BotMan Studio and makes your chatbot development experience even better. By providing testing tools, an out of the box web driver implementation and additional tools like an enhanced CLI with driver installation, class generation and configuration support, it speeds up the development significantly.
+## Install and start Docker
 
-## Documentation
+[Get Docker](https://docs.docker.com/get-docker).
 
-You can find the BotMan and BotMan Studio documentation at [http://botman.io](http://botman.io).
+## Run the next commands in your terminal
 
-## Support the development
-**Do you like this project? Support it by donating**
+Before doing that, please make sure that ports 80 (Apache), 3306 (MySQL), and 6379 (Redis) are available.
 
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=m%2epociot%40googlemail%2ecom&lc=CY&item_name=BotMan&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
-- Patreon: [Donate](https://www.patreon.com/botman)
+```bash
+git clone https://github.com/andreshg112/php-challenge-bot.git
 
-## Security Vulnerabilities
+cd php-challenge-bot
 
-If you discover a security vulnerability within BotMan or BotMan Studio, please send an e-mail to Marcel Pociot at m.pociot@gmail.com. All security vulnerabilities will be promptly addressed.
+cp .env.example .env
 
-## License
+composer install
 
-BotMan is free software distributed under the terms of the MIT license.
+./vessel start
 
+./vessel artisan migrate --step
+```
+
+## Add .env values
+
+Please, add the provided values for MAIL\_\*, AMDOREN_API_KEY, and SENTRY_LARAVEL_DSN.
+
+## Open your browswer
+
+Go to the [localhost:80](http://localhost) and click on the mail icon in the inferior right corner of the screen.
+
+# Chatbot commans
+
+1.  `convert X USD to COP` to convert X dollars to Colombian pesos. You can use any currency code listed [here](https://www.amdoren.com/currency-list).
+
+2.  `signup` to register your information. I suggest you use a Gmail account and check Spam if needed. Outlook is not receiving the password email.
+
+3.  `login` to enter and start registering transactions.
+
+4.  `deposit X` to put X amount of money in your account.
+
+5.  `withdraw X` to extract X amount of money from your account.
+
+6.  `balance` to see your current account balance.
+
+7.  `logout` to forget the user from the session.
