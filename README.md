@@ -25,9 +25,9 @@ composer install
 ./vessel artisan migrate --step
 ```
 
-## Add .env values
+## Add environment variables
 
-Please, add the provided values for MAIL\_\*, AMDOREN_API_KEY, and SENTRY_LARAVEL_DSN.
+Please, add the provided values for MAIL\_\*, AMDOREN_API_KEY, and SENTRY_LARAVEL_DSN. The last one is optional, but it allows me to check and fix bugs.
 
 ## Open your browswer
 
@@ -35,7 +35,7 @@ Go to the [localhost:80](http://localhost) and click on the mail icon in the inf
 
 # Chatbot commans
 
-1.  `convert X USD to COP` to convert X dollars to Colombian pesos. You can use any currency code listed [here](https://www.amdoren.com/currency-list).
+1.  `convert X USD to COP` to convert X United States Dollars to Colombian Pesos. You can use any currency code listed [here](https://www.amdoren.com/currency-list).
 
 2.  `signup` to register your information. I suggest you use a Gmail account and check Spam if needed. Outlook is not receiving the password email.
 
