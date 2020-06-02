@@ -29,12 +29,4 @@ class BotManController extends Controller
     {
         $bot->reply(config('app.messages.hi'));
     }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function tinker()
-    {
-        return view('tinker');
-    }
 }
