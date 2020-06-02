@@ -34,12 +34,7 @@ $botman->hears('Logout', ChatbotLogoutController::class);
 
 $botman->hears('Signup', SignupController::class);
 
-$botman->hears(
-    'Start conversation',
-    BotManController::class . '@startConversation'
-);
-
-// This endpoint was created just to debug user information.
+// This was created just to debug user information.
 $botman->hears('User', function (BotMan $bot) {
     /** @var \App\User $user */
     $user = Auth::user() ?? new User();

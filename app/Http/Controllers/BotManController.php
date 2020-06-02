@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
 use App\Http\Middleware\CheckForUser;
-use App\Conversations\ExampleConversation;
 
 class BotManController extends Controller
 {
@@ -29,15 +28,6 @@ class BotManController extends Controller
     public function hi(BotMan $bot)
     {
         $bot->reply(config('app.messages.hi'));
-    }
-
-    /**
-     * Loaded through routes/botman.php
-     * @param \BotMan\BotMan\BotMan $bot
-     */
-    public function startConversation(BotMan $bot)
-    {
-        $bot->startConversation(new ExampleConversation());
     }
 
     /**
