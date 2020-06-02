@@ -2,6 +2,7 @@
 
 namespace App\Conversations;
 
+use Auth;
 use App\User;
 use Illuminate\Support\Str;
 use App\Notifications\LoginCode;
@@ -32,10 +33,9 @@ class LoginConversation extends Conversation
 
                 $this->bot->userStorage()->save($this->user->toArray());
 
-                $this->say(
-                    "{$this->user->name}, you are in! Now you can type"
-                        . ' "deposit X", "withdraw X", or "balance".'
-                );
+                $message = config('app.messages.you_are_in');
+
+                $this->say("{$this->user->name}, {$message}");
             }
         );
     }
@@ -82,16 +82,14 @@ class LoginConversation extends Conversation
 
     public function run()
     {
-        $userData = $this->bot->userStorage()->find();
+        if (Auth::check()) {
+            /** @var \App\User */
+            $user = Auth::user();
 
-        $this->user = User::find($userData->get('id'));
+            $message = config('app.messages.you_are_in')
+                . ' If you want to start with a new account, type "logout".';
 
-        if (isset($this->user)) {
-            $this->say(
-                "{$this->user->name}, you are already logged in. Now you can"
-                    . ' type "deposit X", "withdraw X", or "balance".'
-                    . ' If you want to start with a new account, type "logout".'
-            );
+            $this->say("{$user->name}, {$message}");
 
             return;
         }
