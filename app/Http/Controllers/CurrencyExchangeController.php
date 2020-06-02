@@ -13,6 +13,8 @@ class CurrencyExchangeController extends Controller
     /**
      * Loaded through routes/botman.php
      *
+     * No time to refactor and use \App\Services\Amdoren\Currency::convert().
+     *
      * @param \BotMan\BotMan\BotMan $bot
      * @param integer|float $amount
      * @param string $from
@@ -48,6 +50,7 @@ class CurrencyExchangeController extends Controller
             return;
         }
 
+        // No time to refactor and use \App\Services\Amdoren\Currency::convert().
         $guzzle = new Client();
 
         $response = $guzzle->get(
